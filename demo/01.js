@@ -3,6 +3,13 @@ const app = new express();
 
 const PORT = 3000;
 
+function middleWare1(req,res,next){
+  console.log('midelware #1');
+  next();
+}
+
+app.use(middleWare1);
+
 app.get('/',(req,res)=>{
  res.send('hellow express');
 })
