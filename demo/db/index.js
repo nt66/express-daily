@@ -3,7 +3,7 @@ const URL = 'mongodb://127.0.0.1:27017/';
 const DBNAME = 'tongtang';
 
 class DB {
-  //单例模式
+  // 单例模式
   static getInstance() {
     if (!DB.instance) {
         DB.instance = new DB();
@@ -11,11 +11,13 @@ class DB {
     return DB.instance;
   }
 
+  // 构造函数
   constructor(){
     this.dbClient = null;
     this.connect();
   }
 
+  // 连接
   connect(){
     return new Promise((resovle,reject)=>{
       MongoClient.connect(URL,(err,client)=>{
@@ -28,6 +30,8 @@ class DB {
       })
     });
   }
+
+  // 查询
   find(collectionName,json){
     return new Promise((res,rej)=>{
       this.connect().then(db=>{
