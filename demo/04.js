@@ -10,6 +10,7 @@ const URL = 'mongodb://127.0.0.1:27017/';
 const DBNAME = 'tongtang';
 
 app.get('/',(req,res)=>{
+  
   // 一 3.0 之前的方式
   // mongodb.connect(URL, (err, db)=>{
   //   const result = db.collection('user').find();
@@ -21,14 +22,18 @@ app.get('/',(req,res)=>{
 
   // 二 3.0 后的方式
   mongodb.connect(URL, (err, client)=>{
+    if(err){
+      res.send('mongodb connect error<br/>');
+      return;
+    }
     const table = client.db(DBNAME);
     const result = table.collection('user').find({'name':'hualingfeng'});
     result.toArray((err,data)=>{
       console.log('result_data:',data);
+      res.send('hellow mongodb<br/>'+JSON.stringify(data));
     });
     client.close();
   });
-  res.send('hellow mongodb<br/>');
 });
 
 app.listen(3000,()=>{
