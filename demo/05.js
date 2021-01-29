@@ -8,9 +8,10 @@ const DB = require('./db');
 const app = express();
 
 app.get('/',async(req,res)=>{
-  const userInfo = await DB.find('user', {'name': 'hualingfeng'})
+  const userInfo = await DB.find('user', {'age': {$gt:22}})
+  // const userInfo = await DB.find('user', {'name': 'hualingfeng'})
   console.log('userInfo',userInfo);
-  res.send('user information:<br/>'+ JSON.stringify(userInfo[0]))
+  res.send('user information:<br/>'+ JSON.stringify(userInfo))
 });
 
 app.listen(3000,()=>{
