@@ -4,6 +4,9 @@ const path = require('path');
 const app = new express();
 const PORT = 3000;
 
+app.locals = {
+  name:'express'
+};
 // 指定path路径&渲染模板
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine','ejs');
