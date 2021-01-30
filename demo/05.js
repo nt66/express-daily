@@ -8,7 +8,9 @@ const DB = require('./db');
 const app = express();
 
 app.get('/',async(req,res)=>{
+  // 大于22
   const userInfo = await DB.find('user', {'age': {$gt:22}})
+  // 等于
   // const userInfo = await DB.find('user', {'name': 'hualingfeng'})
   console.log('userInfo',userInfo);
   res.send('user information:<br/>'+ JSON.stringify(userInfo))
