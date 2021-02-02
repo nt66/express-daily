@@ -20,7 +20,7 @@ class DB {
     this.connect();
   }
 
-  // 连接
+  // 连接 (如果需要动态指定url和dbname，可以在connect中传入参数)
   connect() {
     return new Promise((resovle, reject) => {
       MongoClient.connect(URL, (err, client) => {
