@@ -16,6 +16,16 @@ app.use(cookieParser());
 
 app.get('/',(req,res)=>{
   // 内部就是通过set-cookie设置cookie
+  /**
+   * {
+   *   domian 域
+   *   maxAge  过期时间毫秒
+   *   expires  过期时间
+   *   secure   true https中才有效
+   *   httpOnly 是否http请求才有效
+   *   singed 是否是签名 true
+   * }
+   */
   res.cookie('userName','hualingfeng',{maxAge:60000});
   res.send('login success');
 })
