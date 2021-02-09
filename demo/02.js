@@ -1,3 +1,7 @@
+/**
+ * 静态资源路径&模板渲染
+ * ejs引擎
+ */
 const express = require('express');
 const path = require('path');
 
